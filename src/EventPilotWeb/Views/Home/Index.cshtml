@@ -6,3 +6,37 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div id="mi_mapa" style="width: 100%; height: 600px;"></div>
+
+<script>
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // Importa Leaflet y crea un mapa
+        let map = L.map('mi_mapa').setView([-12.03525, -77.03597], 15);
+
+        // Agrega un mapa base (puedes usar diferentes proveedores de mapas)
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var myIcon = L.icon({
+            iconUrl: '/img/map-marker.png', // Ruta a la imagen del icono
+            iconSize: [38, 38],            // Tamaño del icono [ancho, alto]
+            iconAnchor: [19, 38],          // Punto de anclaje del icono (generalmente la mitad inferior del icono)
+            popupAnchor: [0, -38]          // Punto de anclaje del popup (si lo usas)
+        });
+
+        // Crea un marcador en las coordenadas [51.5, -0.09] y agrega un popup
+        var marker = L.marker([-12.03525, -77.03597]).addTo(map);
+        marker.setIcon(myIcon);
+
+        // marker.bindPopup("¡Hola, mundo!").openPopup();
+
+    });
+
+
+</script>
+
